@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300&family=Josefin+Sans:ital@1&family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+    <script src="./firestore.js"></script>
+    <script src="script.js"></script>
+    <title>To Do App</title>
+  </head>
+  <body>
+    <div class="background-img">
+      <img src="./assets/bg-desktop-dark.jpg" />
+    </div>
+    <div class="container">
+      <div class="header">
+        <div class="title">TODO</div>
+        <div class="theme">
+          <img src="./assets/icon-sun.svg" />
+        </div>
+      </div>
+      <div class="new-todo">
+        <div class="check">
+          <div class="check-mark"></div>
+        </div>
+        <div class="new-todo-input">
+          <form onsubmit="addItem(event)">
+            <input
+              id="todo-input"
+              type="text"
+              placeholder="Yapılacaklarınızı giriniz."
+            />
+          </form>
+        </div>
+      </div>
+      <div class="todo-items-wrapper">
+        <div class="todo-items">
+          <div class="todo-item">
+            <div class="check">
+              <div class="check-mark">
+                <img src="./assets/icon-check.svg" />
+              </div>
+            </div>
+            <!-- <div class="todo-text">cut do laawvb</div> -->
+          </div>
+        </div>
+        <div class="todo-item-info">
+          <div class="items-left">5 item left</div>
+          <div class="item-statuses">
+            <span class="active">All</span>
+            <span>Active</span>
+            <span>Complated</span>
+          </div>
+          <div class="items-clear">
+            <span>Clear Complated</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
