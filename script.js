@@ -17,7 +17,10 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
-
+const kaydet = document.getElementById("kaydet");
+const edit = document.getElementById("edit");
+edit.style.display = "none";
+kaydet.style.display = "none";
 //inputa girilen degerler veri tabanina kaydedildi
 function addItem(event) {
   event.preventDefault();
@@ -63,6 +66,8 @@ function onClickItem(e) {
 }
 //güncelleme işemi
 function onClickEdit(item, a) {
+  edit.style.display = "block";
+  kaydet.style.display = "none";
   document.getElementById("myModal").style.display = "block";
   document.getElementById("textInput").value = item.title;
   document.getElementById("dateInput").value = item.date;
@@ -106,10 +111,15 @@ function generateItems(items) {
            <span id="dateId" class="date-class">${item.date}</span> 
            <span id="textId"class="text-class">${item.text}</span> 
             </div>
+            <div class="statu ${
+              item.status == "active" ? "statu-active" : "statu-complated"
+            }">Plan: ${item.status}</div>
           </div>
     `;
     document.querySelector(".todo-items").innerHTML = itemsHTML;
     creatEventListeners();
+    kaydet.style.display = "block";
+    edit.style.display = "none";
   });
 }
 function creatEventListeners() {

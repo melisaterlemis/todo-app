@@ -140,7 +140,6 @@ body {
 }
 .todo-text {
   display: block;
-  align-items: center;
 }
 .todo-items-wrapper {
   margin-top: 30px;
@@ -344,4 +343,18 @@ body {
   font-variant: normal;
   text-rendering: auto;
   line-height: 1;
+}
+.statu {
+  font-size: 17px;
+  color: rgb(238, 235, 235);
+  display: block;
+  margin-top: 10px;
+  position: fixed;
+  right: 30%;
+}
+.statu-active {
+  color: #46b823;
+}
+.statu-complated {
+  color: #f53033;
 }
