@@ -61,13 +61,31 @@ function onClickItem(e) {
       console.log("basarisiz", error);
     });
 }
+//güncelleme işemi
+function onClickEdit(item, a) {
+  document.getElementById("myModal").style.display = "block";
+  document.getElementById("textInput").value = item.title;
+  document.getElementById("dateInput").value = item.date;
+  document.getElementById("input").value = item.text;
+
+  let aa = document.getElementsByClassName("editbtn");
+  aa[0].addEventListener("click", function () {
+    db.collection("todo-item")
+      .doc(item.id)
+      .update({
+        title: document.getElementById("textInput").value,
+        date: document.getElementById("dateInput").value,
+        text: document.getElementById("input").value,
+      });
+  });
+}
 
 // veritabanindan gelen verileri olusturuyoruz ekranda veritabnini her guncelledeigimizde yeni ogeler uretitiyoruz
 function generateItems(items) {
   let itemsHTML = "";
-  items.forEach((item) => {
+  items.forEach((item, index) => {
     itemsHTML += `
-    <div class="todo-item"> 
+    <div class="todo-item""> 
             <div class="check">
               <div data-id="${item.id}" class="check-mark ${
       item.status == "completed" ? "checked" : ""
@@ -78,15 +96,15 @@ function generateItems(items) {
             <button onclick="onClickItem(this)" data-id="${item.id}" id="${
       item.id
     }" class="btn"><i class="fa fa-trash"></i></button>
-    <button onclick="onClickEdit(this)" data-id="${item.id}" id="${
-      item.id
-    }" class="btn"><i class="fal fa-pencil-alt"></i></button>
+    <button onclick='onClickEdit(${JSON.stringify(
+      item
+    )}, this)' class="btn edit"><i class="fal fa-pencil-alt"></i></button>
             <div class="todo-text ${
               item.status == "completed" ? "checked" : ""
             }">
-           <span class="title-class">${item.title}</span>
-           <span class="date-class">${item.date}</span> 
-           <span class="text-class">${item.text}</span> 
+           <span id="titleId" class="title-class">${item.title}</span>
+           <span id="dateId" class="date-class">${item.date}</span> 
+           <span id="textId"class="text-class">${item.text}</span> 
             </div>
           </div>
     `;
@@ -94,7 +112,6 @@ function generateItems(items) {
     creatEventListeners();
   });
 }
-
 function creatEventListeners() {
   let todoCheckMarks = document.querySelectorAll(".todo-item .check-mark");
   todoCheckMarks.forEach((chechMark) => {

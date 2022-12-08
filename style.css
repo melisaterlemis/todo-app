@@ -241,8 +241,24 @@ body {
   outline: none;
   cursor: pointer;
   transition: 0.3s;
+  margin-bottom: 5px;
 }
 .left button:hover {
+  box-shadow: 3px 3px 4px #000;
+}
+.editbtn {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
+  color: #fff;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 5px;
+}
+.editbtn:hover {
   box-shadow: 3px 3px 4px #000;
 }
 .left .btn-cancel {
@@ -282,15 +298,11 @@ body {
   background-color: rgba(230, 230, 230, 0.6);
   padding: 0.5rem 1rem;
   font-size: 1.1rem;
-  margin-bottom: 22px;
+  margin-bottom: 5px;
   transition: 0.3s;
 }
 .left textarea:hover {
   background-color: rgba(0, 0, 0, 0.1);
-}
-h2 {
-  padding: 0 0 10px;
-  margin-bottom: 10px;
 }
 
 .hrStyle {
@@ -305,17 +317,7 @@ h2 {
   border-radius: 2px;
   background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
 }
-/* h2:after {
-  content: "";
-  position: absolute;
-  left: 18%;
-  bottom: 0;
-  transform: translateX(-50%);
-  height: 4px;
-  width: 50px;
-  border-radius: 2px;
-  background: linear-gradient(135deg, #55ddff 0%, #c058f3 100%);
-} */
+
 .title-class {
   font-size: 17px;
   color: rgb(238, 235, 235);
