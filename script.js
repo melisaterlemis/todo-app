@@ -17,6 +17,7 @@ window.onclick = function (event) {
     modal.style.display = "none";
   }
 };
+
 const kaydet = document.getElementById("kaydet");
 const edit = document.getElementById("edit");
 edit.style.display = "none";
@@ -85,7 +86,6 @@ function onClickEdit(item, a) {
       });
   });
 }
-
 // veritabanindan gelen verileri olusturuyoruz ekranda veritabnini her guncelledeigimizde yeni ogeler uretitiyoruz
 function generateItems(items) {
   let itemsHTML = "";
@@ -115,7 +115,7 @@ function generateItems(items) {
             <div class="statu ${
               item.status == "active" ? "statu-active" : "statu-complated"
             }">Plan: ${item.status}</div>
-          </div>
+          </div>   
     `;
     document.querySelector(".todo-items").innerHTML = itemsHTML;
     creatEventListeners();
@@ -123,6 +123,7 @@ function generateItems(items) {
     edit.style.display = "none";
   });
 }
+
 function creatEventListeners() {
   let todoCheckMarks = document.querySelectorAll(".todo-item .check-mark");
   todoCheckMarks.forEach((chechMark) => {
@@ -151,4 +152,40 @@ function markCompleted(id) {
     }
   });
 }
+function allList() {
+  let todos = document.querySelector(".todo-items");
+  let arrTodo = todos.getElementsByClassName("todo-item");
+  let arrStatu = todos.getElementsByClassName("statu");
+
+  for (let i = 0; i < arrStatu.length; i++) {
+    arrStatu[i].innerHTML == "Plan: completed"
+      ? arrTodo[i].classList.remove("gizle")
+      : arrTodo[i].classList.remove("gizle");
+  }
+}
+function activeList() {
+  let todos = document.querySelector(".todo-items");
+  let arrTodo = todos.getElementsByClassName("todo-item");
+  let arrStatu = todos.getElementsByClassName("statu");
+
+  for (let i = 0; i < arrStatu.length; i++) {
+    arrStatu[i].innerHTML == "Plan: completed"
+      ? arrTodo[i].classList.add("gizle")
+      : arrTodo[i].classList.remove("gizle");
+  }
+}
+
+function completed() {
+  let todos = document.querySelector(".todo-items");
+  let arrTodo = todos.getElementsByClassName("todo-item");
+  let arrStatu = todos.getElementsByClassName("statu");
+
+  for (let i = 0; i < arrStatu.length; i++) {
+    arrStatu[i].innerHTML == "Plan: active"
+      ? arrTodo[i].classList.add("gizle")
+      : arrTodo[i].classList.remove("gizle");
+  }
+}
+
+function clearAll() {}
 getItems();
