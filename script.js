@@ -21,6 +21,7 @@ const kaydet = document.getElementById("kaydet");
 const edit = document.getElementById("edit");
 edit.style.display = "none";
 kaydet.style.display = "none";
+
 //inputa girilen degerler veri tabanina kaydedildi
 function addItem(event) {
   event.preventDefault();
