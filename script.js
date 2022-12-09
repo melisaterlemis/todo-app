@@ -21,7 +21,7 @@ window.onclick = function (event) {
 const kaydet = document.getElementById("kaydet");
 const edit = document.getElementById("edit");
 edit.style.display = "none";
-kaydet.style.display = "none";
+kaydet.style.display = "block";
 
 //inputa girilen degerler veri tabanina kaydedildi
 function addItem(event) {
@@ -187,5 +187,13 @@ function completed() {
   }
 }
 
-function clearAll() {}
+function clearAll() {
+  db.collection("todo-item")
+    .get()
+    .then((res) => {
+      res.forEach((element) => {
+        element.ref.delete();
+      });
+    });
+}
 getItems();
