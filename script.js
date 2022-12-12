@@ -50,6 +50,7 @@ function getItems() {
         ...doc.data(),
       });
     });
+    items.sort((a, b) => new Date(a.date) - new Date(b.date));
     generateItems(items);
   });
 }
@@ -84,14 +85,19 @@ function onClickEdit(item, a) {
         date: document.getElementById("dateInput").value,
         text: document.getElementById("input").value,
       });
+    let msg = document.getElementById("Text");
+    msg.style.display = "block";
   });
+  let msg = document.getElementById("Text");
+  msg.style.display = "none";
 }
+
 // veritabanindan gelen verileri olusturuyoruz ekranda veritabnini her guncelledeigimizde yeni ogeler uretitiyoruz
 function generateItems(items) {
   let itemsHTML = "";
   items.forEach((item, index) => {
     itemsHTML += `
-    <div class="todo-item""> 
+    <div id="todoItem" class="todo-item""> 
             <div class="check">
               <div data-id="${item.id}" class="check-mark ${
       item.status == "completed" ? "checked" : ""
@@ -115,13 +121,17 @@ function generateItems(items) {
             <div class="statu ${
               item.status == "active" ? "statu-active" : "statu-complated"
             }">Plan: ${item.status}</div>
-          </div>   
+          </div>
     `;
     document.querySelector(".todo-items").innerHTML = itemsHTML;
     creatEventListeners();
     kaydet.style.display = "block";
     edit.style.display = "none";
+    setTimeout(() => {
+      modal.style.display = "none";
+    }, 1000);
   });
+  console.table(items);
 }
 
 function creatEventListeners() {
@@ -191,9 +201,10 @@ function clearAll() {
   db.collection("todo-item")
     .get()
     .then((res) => {
-      res.forEach((element) => {
+      res.docs.forEach((element) => {
         element.ref.delete();
       });
+      generateItems([]);
     });
 }
 getItems();

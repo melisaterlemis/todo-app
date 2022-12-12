@@ -80,6 +80,7 @@
                      <!-- <button type="submit" class="btn-save" onclick="butonFunction()">Kaydet</button>  -->
                      <button type="submit" id="kaydet" class="btn-save" onclick="addItem(event)">Kaydet</button>
                     <input type="button" id="edit" class="editbtn" value="Kaydet"></input> 
+                    <p id="Text" class="message">Günecelleme işlemi başarılı.</p>
                   </form>
                 </div>
               </div>
@@ -99,11 +100,11 @@
           </div>
         </div>
         <div class="todo-item-info">
-          <div class="items-left">5 item left</div>
+          <!-- <div class="items-left"></div>   -->
           <div class="item-statuses">
-            <span onclick="allList()">All</span>
-            <span onclick="activeList()">Active</span>
-            <span onclick="completed()">Completed</span>
+            <span onclick="allList()"> All  </span>
+            <span onclick="activeList()"> Active </span>
+            <span onclick="completed()"> Completed </span>
           </div>
           <div class="items-clear">
             <span onclick="clearAll()">Clear All Todos</span>
