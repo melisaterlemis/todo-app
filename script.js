@@ -1,3 +1,4 @@
+//modalin açılıp kapanması kontrol edildi.
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("todo-input");
 var span = document.getElementsByClassName("close")[0];
@@ -41,9 +42,11 @@ function getItems() {
     snapshot.docs.forEach((doc) => {
       items.push({
         id: doc.id,
+        //diğer bilgileri almak için
         ...doc.data(),
       });
     });
+    // itemsları tarihe göre sıraladık
     items.sort((a, b) => new Date(a.date) - new Date(b.date));
     generateItems(items);
   });
@@ -80,6 +83,7 @@ function doEdit(e) {
 function onClickEdit(item) {
   edit.style.display = "block";
   kaydet.style.display = "none";
+  //inputları veritabanındaki değerlerle doldurduk
   document.getElementById("myModal").style.display = "block";
   document.getElementById("textInput").value = item.title;
   document.getElementById("dateInput").value = item.date;
@@ -93,6 +97,7 @@ function onClickEdit(item) {
   let msg = document.getElementById("Text");
   msg.style.display = "none";
 }
+//günclleme işleminden sonra açılan popup
 let popup = document.getElementById("popup");
 function openPopup() {
   popup.classList.add("open-popup");
