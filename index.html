@@ -21,6 +21,17 @@
     <title>To Do App</title>
   </head>
   <body>
+    <div class="pop">
+      <div class="containerPop">
+        <!-- <button type="submit" class="pop-btn">Sumbit</button> -->
+        <div class="popup" id="popup">
+          <img src="./assets/pngtree-purple.jpg" />
+          <h2>Thank You!</h2>
+          <p>Güncelleme başarılı..</p>
+          <button type="button" onclick="closePopup()">OK</button>
+        </div>
+      </div>
+    </div>
     <div class="background-img">
       <img src="./assets/bg-desktop-dark.jpg" />
     </div>
@@ -84,7 +95,12 @@
                       >
                         Kaydet
                       </button>
-                      <button type="submit" id="edit" class="editbtn">
+                      <button
+                        type="submit"
+                        id="edit"
+                        class="editbtn"
+                        onclick="openPopup()"
+                      >
                         Kaydet
                       </button>
                       <!-- <input type="button" id="edit" class="editbtn" value="Kaydet"></input>  -->

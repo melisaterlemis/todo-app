@@ -1,23 +1,17 @@
 var modal = document.getElementById("myModal");
-
 var btn = document.getElementById("todo-input");
-
 var span = document.getElementsByClassName("close")[0];
-
 btn.onclick = function () {
   modal.style.display = "block";
 };
-
 function closeModal() {
   document.getElementById("myModal").style.display = "none";
 }
-
 window.onclick = function (event) {
   if (event.target == modal) {
     modal.style.display = "none";
   }
 };
-
 const kaydet = document.getElementById("kaydet");
 const edit = document.getElementById("edit");
 edit.style.display = "none";
@@ -25,7 +19,6 @@ kaydet.style.display = "block";
 
 //inputa girilen degerler veri tabanina kaydedildi
 function addItem(event) {
-  // document.getElementById("todoItem").parentElement.add();
   event.preventDefault();
   let text = document.getElementById("input");
   let title = document.getElementById("textInput");
@@ -75,9 +68,9 @@ function doEdit(e) {
       date: document.getElementById("dateInput").value,
       text: document.getElementById("input").value,
     });
-  let msg = document.getElementById("Text");
-  msg.style.display = "block";
-  alert("Günceleme işlemi başarılı...");
+  document.getElementById("textInput").value = "";
+  document.getElementById("dateInput").value = "";
+  document.getElementById("input").value = "";
   if (e.currentTarget.condiction) {
     let aa = document.getElementsByClassName("editbtn");
     aa[0].removeEventListener("click", doEdit, true);
@@ -100,7 +93,13 @@ function onClickEdit(item) {
   let msg = document.getElementById("Text");
   msg.style.display = "none";
 }
-
+let popup = document.getElementById("popup");
+function openPopup() {
+  popup.classList.add("open-popup");
+}
+function closePopup() {
+  popup.classList.remove("open-popup");
+}
 // veritabanindan gelen verileri olusturuyoruz ekranda veritabnini her guncelledeigimizde yeni ogeler uretitiyoruz
 function generateItems(items) {
   let itemsHTML = "";
