@@ -36,58 +36,68 @@
           <div class="check-mark"></div>
         </div> -->
         <div class="new-todo-input">
-          <button
-            id="todo-input"
-          >Todo eklemek için tıkla.</button>
-          <form>
-          <div id="myModal" class="modal">
-            <!-- Modal content -->
-            <div class="modal-content">
-              <span onclick="closeModal()" class="close">&times;</span>
-              <div class="hrStyle">
-                <h2>Todo List</h2>
-                <hr>
-              </div>
-              <div class="modal-container">
-                <div class="left">
-                  <form id="form-modal">
-                    <p></p>
-                    <input
-                      type="text"
-                      class="form-control"
-                      name=""
-                      id="textInput"
-                      placeholder="Başlık giriniz"
-                    />
-                    <br /><br />
-                    <p></p>
-                    <input
-                      type="date"
-                      class="form-control"
-                      name=""
-                      id="dateInput"
-                    />
-                    <br /><br />
-                    <label for="post"></label>
-                    <textarea
-                      name="post"
-                      id="input"
-                      cols="30"
-                      rows="10"
-                      placeholder="Yapılacaklar"
-                    ></textarea>
-                    <br />
-                     <!-- <button type="submit" class="btn-save" onclick="butonFunction()">Kaydet</button>  -->
-                     <button type="submit" id="kaydet" class="btn-save" onclick="addItem(event)">Kaydet</button>
-                    <input type="button" id="edit" class="editbtn" value="Kaydet"></input> 
-                    <p id="Text" class="message">Günecelleme işlemi başarılı.</p>
-                  </form>
+          <button id="todo-input">Todo eklemek için tıkla.</button>
+          <div>
+            <div id="myModal" class="modal">
+              <!-- Modal content -->
+              <div class="modal-content">
+                <span onclick="closeModal()" class="close">&times;</span>
+                <div class="hrStyle">
+                  <h2>Todo List</h2>
+                  <hr />
+                </div>
+                <div class="modal-container">
+                  <div class="left">
+                    <div id="form-modal">
+                      <p></p>
+                      <input
+                        type="text"
+                        class="form-control"
+                        name=""
+                        id="textInput"
+                        placeholder="Başlık giriniz"
+                      />
+                      <br /><br />
+                      <p></p>
+                      <input
+                        type="date"
+                        class="form-control"
+                        name=""
+                        id="dateInput"
+                      />
+                      <br /><br />
+                      <label for="post"></label>
+                      <textarea
+                        name="post"
+                        id="input"
+                        cols="30"
+                        rows="10"
+                        placeholder="Yapılacaklar"
+                      ></textarea>
+                      <br />
+                      <!-- <button type="submit" class="btn-save" onclick="butonFunction()">Kaydet</button>  -->
+                      <button
+                        type="submit"
+                        id="kaydet"
+                        class="btn-save"
+                        onclick="addItem(event)"
+                      >
+                        Kaydet
+                      </button>
+                      <button type="submit" id="edit" class="editbtn">
+                        Kaydet
+                      </button>
+                      <!-- <input type="button" id="edit" class="editbtn" value="Kaydet"></input>  -->
+                      <p id="Text" class="message">
+                        Günecelleme işlemi başarılı.
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </form>
       </div>
       <div class="todo-items-wrapper">
         <div class="todo-items" id="todos">
@@ -102,7 +112,7 @@
         <div class="todo-item-info">
           <!-- <div class="items-left"></div>   -->
           <div class="item-statuses">
-            <span onclick="allList()"> All  </span>
+            <span onclick="allList()"> All </span>
             <span onclick="activeList()"> Active </span>
             <span onclick="completed()"> Completed </span>
           </div>

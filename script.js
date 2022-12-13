@@ -25,6 +25,7 @@ kaydet.style.display = "block";
 
 //inputa girilen degerler veri tabanina kaydedildi
 function addItem(event) {
+  // document.getElementById("todoItem").parentElement.add();
   event.preventDefault();
   let text = document.getElementById("input");
   let title = document.getElementById("textInput");
@@ -54,7 +55,6 @@ function getItems() {
     generateItems(items);
   });
 }
-
 //verileri database ve ekrandan silme işlemi
 function onClickItem(e) {
   db.collection("todo-item")
@@ -67,27 +67,36 @@ function onClickItem(e) {
       console.log("basarisiz", error);
     });
 }
+function doEdit(e) {
+  db.collection("todo-item")
+    .doc(e.currentTarget.id)
+    .update({
+      title: document.getElementById("textInput").value,
+      date: document.getElementById("dateInput").value,
+      text: document.getElementById("input").value,
+    });
+  let msg = document.getElementById("Text");
+  msg.style.display = "block";
+  alert("Günceleme işlemi başarılı...");
+  if (e.currentTarget.condiction) {
+    let aa = document.getElementsByClassName("editbtn");
+    aa[0].removeEventListener("click", doEdit, true);
+  }
+}
 //güncelleme işemi
-function onClickEdit(item, a) {
+function onClickEdit(item) {
   edit.style.display = "block";
   kaydet.style.display = "none";
   document.getElementById("myModal").style.display = "block";
   document.getElementById("textInput").value = item.title;
   document.getElementById("dateInput").value = item.date;
   document.getElementById("input").value = item.text;
-
   let aa = document.getElementsByClassName("editbtn");
-  aa[0].addEventListener("click", function () {
-    db.collection("todo-item")
-      .doc(item.id)
-      .update({
-        title: document.getElementById("textInput").value,
-        date: document.getElementById("dateInput").value,
-        text: document.getElementById("input").value,
-      });
-    let msg = document.getElementById("Text");
-    msg.style.display = "block";
-  });
+  aa[0].removeEventListener("click", doEdit, true);
+
+  aa[0].addEventListener("click", doEdit, true);
+  aa[0].id = item.id;
+  aa[0].condiction = true;
   let msg = document.getElementById("Text");
   msg.style.display = "none";
 }
@@ -110,7 +119,7 @@ function generateItems(items) {
     }" class="btn"><i class="fa fa-trash"></i></button>
     <button onclick='onClickEdit(${JSON.stringify(
       item
-    )}, this)' class="btn edit"><i class="fal fa-pencil-alt"></i></button>
+    )})' class="btn edit"><i class="fal fa-pencil-alt"></i></button>
             <div class="todo-text ${
               item.status == "completed" ? "checked" : ""
             }">
@@ -131,7 +140,6 @@ function generateItems(items) {
       modal.style.display = "none";
     }, 1000);
   });
-  console.table(items);
 }
 
 function creatEventListeners() {
@@ -204,7 +212,8 @@ function clearAll() {
       res.docs.forEach((element) => {
         element.ref.delete();
       });
-      generateItems([]);
+      document.getElementById("todoItem").parentElement.remove();
     });
 }
+
 getItems();
